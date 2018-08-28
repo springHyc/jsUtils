@@ -1,8 +1,7 @@
 {
-  "name": "jsUtils",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": ".",
+  "name": "jsutils-100",
+  "version": "1.0.0",
+  "author": "spring.hehe.v5",
   "dependencies": {
     "lodash": "^4.17.10"
   },
@@ -11,5 +10,19 @@
   },
   "devDependencies": {
     "jest": "^23.5.0"
-  }
+  },
+  "description": "在 lodash 基础上扩展的一些 jsUtils",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/springHyc/jsUtils.git"
+  },
+  "keywords": [
+    "jsUtils"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/springHyc/jsUtils/issues"
+  },
+  "homepage": "https://github.com/springHyc/jsUtils#readme"
 }
