@@ -9,3 +9,4 @@ deploy/
 .vscode/
 .eslintignore
 .eslintrc.*
+package-lock.json
