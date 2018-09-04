@@ -1,6 +1,6 @@
 {
   "name": "jsutils-100",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "spring.hehe.v5",
   "dependencies": {
     "lodash": "^4.17.10"
