@@ -10,3 +10,4 @@ deploy/
 .eslintignore
 .eslintrc.*
 package-lock.json
+lib/
