@@ -1,6 +1,6 @@
 {
   "name": "jsutils-100",
-  "version": "1.0.1-alpha.2",
+  "version": "1.0.1-beta.0",
   "author": "spring.hehe.v5",
   "dependencies": {
     "lodash": "^4.17.10"
@@ -16,7 +16,7 @@
     "jest": "^23.5.0"
   },
   "description": "在 lodash 基础上扩展的一些 jsUtils",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/springHyc/jsUtils.git"
