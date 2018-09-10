@@ -60,4 +60,10 @@ describe("测试jsUtils", () => {
     expect(jsUtils.isDigit(null)).toBeFalsy();
     expect(jsUtils.isDigit(undefined)).toBeFalsy();
   });
+
+  // describe("isEmptyOneOfTwo", () => {
+  it("第一个参数不是数组", () => {
+    expect(jsUtils.test(3)).toBeTruthy();
+  });
+  // });
 });
