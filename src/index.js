@@ -70,4 +70,64 @@ jsUtils.isEmptyOneOfTwo = (value1, value2) => {
   }
 };
 
+/**
+ * 如果输入内容，那么输入内容只能是汉字
+ * @param {String} value
+ * @returns {Boolean}
+ */
+jsUtils.isChinese = value => {
+  return value && /^[\u0391-\uFFE5]+$/.test(value);
+};
+/**
+ * 验证是否为邮箱
+ * @param {String} value
+ * @returns {Boolean}
+ */
+jsUtils.isEmail = value => {
+  return (
+    value &&
+    /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(
+      value
+    )
+  );
+};
+
+/**
+ * 验证是否为手机号码
+ * @param {String} value
+ * @returns {Boolean}
+ */
+jsUtils.isPhoneNumber = value => {
+  return value && /^[1][0-9][0-9]{9}$/.test(value);
+};
+/**
+ * 验证是否为有效的身份证号码，需要校验生日、出生地、性别等
+ * @param {*} value
+ * @returns {Boolean}
+ */
+jsUtils.isIdNumber = value => {};
+
+/**
+ * 校验IP地址是否正确
+ * @param {String}} value
+ * @returns {Boolean}
+ */
+jsUtils.isIp = value => {
+  if (lodash.isNull(value)) {
+    return false;
+  } else {
+    var re = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/g; //匹配IP地址的正则表达式
+    if (re.test(value)) {
+      if (
+        RegExp.$1 < 256 &&
+        RegExp.$2 < 256 &&
+        RegExp.$3 < 256 &&
+        RegExp.$4 < 256
+      )
+        return true;
+    }
+    return false;
+  }
+};
+
 module.exports = jsUtils;

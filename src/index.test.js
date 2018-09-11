@@ -119,4 +119,84 @@ describe("测试jsUtils", () => {
       ).toBeTruthy();
     });
   });
+
+  describe("验证如果输入内容，那么输入内容只能是汉字", () => {
+    it("没有输入内容", () => {
+      expect(jsUtils.isChinese()).toBeFalsy();
+      expect(jsUtils.isChinese(undefined)).toBeFalsy();
+      expect(jsUtils.isChinese(null)).toBeFalsy();
+    });
+    it("输入有内容", () => {
+      expect(jsUtils.isChinese("ddd")).toBeFalsy();
+      expect(jsUtils.isChinese("")).toBeFalsy();
+      expect(jsUtils.isChinese("3")).toBeFalsy();
+      expect(jsUtils.isChinese(34)).toBeFalsy();
+      expect(jsUtils.isChinese(34.9)).toBeFalsy();
+      expect(
+        jsUtils.isChinese("sdfawfsdaf.sfawfmkmoiaf--9werqe nkj")
+      ).toBeFalsy();
+      expect(jsUtils.isChinese("   ")).toBeFalsy();
+      expect(jsUtils.isChinese("null")).toBeFalsy();
+      expect(jsUtils.isChinese("undefined")).toBeFalsy();
+      expect(jsUtils.isChinese("贺贺")).toBeTruthy();
+      expect(jsUtils.isChinese("贺贺-贺贺")).toBeFalsy();
+      expect(jsUtils.isChinese("工作每天顺利吗？")).toBeTruthy();
+    });
+    it("输入的为标点符号", () => {
+      expect(jsUtils.isChinese("？")).toBeTruthy();
+      expect(jsUtils.isChinese(".")).toBeFalsy();
+      expect(jsUtils.isChinese("。")).toBeTruthy();
+      expect(jsUtils.isChinese("，。、？")).toBeTruthy();
+      expect(jsUtils.isChinese("，。 ？,")).toBeFalsy();
+    });
+  });
+
+  describe("验证邮箱输入是否正确", () => {
+    it("没有输入", () => {
+      expect(jsUtils.isEmail()).toBeFalsy();
+      expect(jsUtils.isEmail(null)).toBeFalsy();
+      expect(jsUtils.isEmail(undefined)).toBeFalsy();
+      expect(jsUtils.isEmail("")).toBeFalsy();
+    });
+    it("有输入", () => {
+      expect(jsUtils.isEmail("zhulinger520@163.com")).toBeTruthy();
+      expect(jsUtils.isEmail("spring.hehe.v5@gmail.com")).toBeTruthy();
+      expect(jsUtils.isEmail("dddd@sss.com.cn")).toBeTruthy();
+      expect(jsUtils.isEmail("ddd@qq.cn")).toBeTruthy();
+      expect(jsUtils.isEmail("dddd@ddd")).toBeFalsy();
+      expect(jsUtils.isEmail("zhulinger520@163.comm")).toBeFalsy();
+    });
+  });
+
+  describe("验证是否为手机号码", () => {
+    it("没有输入时", () => {
+      expect(jsUtils.isPhoneNumber()).toBeFalsy();
+      expect(jsUtils.isPhoneNumber(null)).toBeFalsy();
+      expect(jsUtils.isPhoneNumber(undefined)).toBeFalsy();
+      expect(jsUtils.isPhoneNumber("")).toBeFalsy();
+    });
+    it("有输入值时", () => {
+      expect(jsUtils.isPhoneNumber("12312898934")).toBeTruthy();
+      expect(jsUtils.isPhoneNumber(12319345627)).toBeTruthy();
+      expect(jsUtils.isPhoneNumber("023-3745453")).toBeFalsy();
+      expect(jsUtils.isPhoneNumber(8723983)).toBeFalsy();
+      expect(jsUtils.isPhoneNumber(8723983.342)).toBeFalsy();
+      expect(jsUtils.isPhoneNumber("21345787635")).toBeFalsy();
+    });
+  });
+
+  describe("校验是否为正确的IP地址", () => {
+    it("没有输入时", () => {
+      expect(jsUtils.isIp()).toBeFalsy();
+      expect(jsUtils.isIp(null)).toBeFalsy();
+      expect(jsUtils.isIp(undefined)).toBeFalsy();
+    });
+    it("有内容输入时", () => {
+      expect(jsUtils.isIp("192.168.90.124")).toBeTruthy();
+      expect(jsUtils.isIp("192.168.90.257")).toBeFalsy();
+      expect(jsUtils.isIp("1.2.3")).toBeFalsy();
+      expect(jsUtils.isIp("0.2.3.0")).toBeTruthy();
+      expect(jsUtils.isIp("1111")).toBeFalsy();
+    });
+  });
 });
