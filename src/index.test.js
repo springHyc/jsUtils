@@ -61,9 +61,62 @@ describe("测试jsUtils", () => {
     expect(jsUtils.isDigit(undefined)).toBeFalsy();
   });
 
-  // describe("isEmptyOneOfTwo", () => {
-  it("第一个参数不是数组", () => {
-    expect(jsUtils.test(3)).toBeTruthy();
+  describe("isEmptyOneOfTwo", () => {
+    it("第一个参数不是数组", () => {
+      expect(jsUtils.isEmptyOneOfTwo(3, 4)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(3, "hehe")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo("name", "age")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(3, null)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(3, undefined)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(3, "")).toBeTruthy();
+    });
+    it("第一个参数是数组,数组中有2个数据", () => {
+      expect(jsUtils.isEmptyOneOfTwo([3, 4], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, "name"], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["3", "4"], "23")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([4, "4"], "23")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["56", 4], "23")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["56", "null"], "23")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, ""], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, null], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, undefined], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([null, undefined], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([null, "89"], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([null, "89"], null)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", ""], null)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", ""], "")).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", ""], undefined)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", ""], 90)).toBeFalsy();
+    });
+    it("第一个参数是数组，数组中有多个数据", () => {
+      expect(jsUtils.isEmptyOneOfTwo([3, 4, 5], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, 4, 5, "ddd"], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, null, 5], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([3, null, null], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo([null, null, null], 5)).toBeFalsy();
+      expect(
+        jsUtils.isEmptyOneOfTwo([undefined, undefined, undefined, undefined], 5)
+      ).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["", null, undefined], 5)).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["", null, undefined], "")).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", null, 5], "")).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", null, 5], null)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["", "90", 5], null)).toBeTruthy();
+      expect(jsUtils.isEmptyOneOfTwo(["name", "90", 5], null)).toBeFalsy();
+      expect(
+        jsUtils.isEmptyOneOfTwo(["89", "90", "34"], undefined)
+      ).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["89", "90", "34"], "")).toBeFalsy();
+      expect(jsUtils.isEmptyOneOfTwo(["89", "90", "34", "45"], "")).toBeFalsy();
+      expect(
+        jsUtils.isEmptyOneOfTwo(["89", "90", "34", "45", "450"], "")
+      ).toBeFalsy();
+      expect(
+        jsUtils.isEmptyOneOfTwo(["89", "", "34", "45", "450"], "")
+      ).toBeTruthy();
+      expect(
+        jsUtils.isEmptyOneOfTwo(["89", undefined, "34", "45", "450"], undefined)
+      ).toBeTruthy();
+    });
   });
-  // });
 });

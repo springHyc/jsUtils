@@ -41,22 +41,25 @@ jsUtils.isInteger = value => {
   return /^[0-9]+$/.test(value);
 };
 
-jsUtils.test = value => {
-  return !!value;
-};
-
+/**
+ * 验证value1和value2二者有一个不为空即可返回true
+ * 当value1为数组时，必须数组中的每个值都不为空，value1才不为空
+ * @param {String | Number | Array} value1
+ * @param {String | Number} value2
+ * @returns {Boolean}
+ */
 jsUtils.isEmptyOneOfTwo = (value1, value2) => {
   if (lodash.isArray(value1)) {
-    let result1 = false;
-    value1.forEach(item => {
-      if (jsUtils.isEmpty(item)) {
-        result1 = true;
-      }
-    });
-    if (result1 || jsUtils.isEmpty(value2)) {
-      return true;
+    if (jsUtils.isEmpty(value2)) {
+      let result = false;
+      value1.forEach(item => {
+        if (jsUtils.isEmpty(item)) {
+          result = true;
+        }
+      });
+      return result;
     } else {
-      false;
+      return false;
     }
   } else {
     if (jsUtils.isEmpty(value1) || jsUtils.isEmpty(value2)) {
