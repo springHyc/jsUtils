@@ -100,7 +100,7 @@ jsUtils.isPhoneNumber = value => {
   return value && /^[1][0-9][0-9]{9}$/.test(value);
 };
 /**
- * 验证是否为有效的身份证号码，需要校验生日、出生地、性别等
+ * 验证是否为有效的身份证号码，需要校验生日、出生地、校验位等
  * @param {*} value
  * @returns {Boolean}
  */

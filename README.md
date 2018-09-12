@@ -99,9 +99,117 @@ expect(jsUtils.isDigit(null)).toBeFalsy();
 
 ### 5. `isEmptyOneOfTwo`方法
 
+`isEmptyOneOfTwo`方法是用来验证 value1 和 value2 二者有一个不为空即可返回 true，其中当 value1 为数组时，必须数组中的每个值都不为空，value1 才不为空。
+
+用法像这样：
+
+```js
+expect(jsUtils.isEmptyOneOfTwo(3, 4)).toBeFalsy();
+expect(jsUtils.isEmptyOneOfTwo(3, "hehe")).toBeFalsy();
+expect(jsUtils.isEmptyOneOfTwo(["56", 4], "23")).toBeFalsy();
+expect(
+  jsUtils.isEmptyOneOfTwo(["89", "90", "34", "45", "450"], "")
+).toBeFalsy();
+...
+```
+
 ### 6. `isChinese`方法
 
+`isChinese`方法是用来验证如果输入内容，那么输入内容只能是汉字。
+
+用法像这样：
+
+```js
+expect(jsUtils.isChinese("？")).toBeTruthy();
+expect(jsUtils.isChinese(".")).toBeFalsy();
+expect(jsUtils.isChinese("ddd")).toBeFalsy();
+expect(jsUtils.isChinese("undefined")).toBeFalsy();
+expect(jsUtils.isChinese("贺贺")).toBeTruthy();
+...
+```
+
 ### 7. `isEmail`方法
+
+`isEmail`方法是用来验证邮箱输入是否正确。
+
+用法像这样：
+
+```js
+expect(jsUtils.isEmail(undefined)).toBeFalsy();
+expect(jsUtils.isEmail("")).toBeFalsy();
+expect(jsUtils.isEmail("zhulinger520@163.com")).toBeTruthy();
+expect(jsUtils.isEmail("spring.hehe.v5@gmail.com")).toBeTruthy();
+...
+```
+
+### 8. `isPhoneNumber`方法
+
+`isPhoneNumber`方法是用来验证是否为手机号码。
+
+用法像这样：
+
+```js
+expect(jsUtils.isPhoneNumber()).toBeFalsy();
+expect(jsUtils.isPhoneNumber(null)).toBeFalsy();
+expect(jsUtils.isPhoneNumber(8723983)).toBeFalsy();
+expect(jsUtils.isPhoneNumber(8723983.342)).toBeFalsy();
+...
+```
+
+### 9. `isIdNumber`方法
+
+`isIdNumber`方法是用来校验有效身份证号码。其中包括 15 位和 18 位，要校验生日、出生地、校验位等。
+
+用法像这样：
+
+```js
+expect(jsUtils.isIdNumber("131182199101311221")).toBeTruthy();
+expect(jsUtils.isIdNumber("131182199101321221")).toBeFalsy();
+expect(jsUtils.isIdNumber("131182199102021221")).toBeFalsy(); // 校验位不对
+expect(jsUtils.isIdNumber("131182199102021226")).toBeTruthy(); // 校验位正确
+...
+```
+
+### 10. `isIp`方法
+
+`isIp`方法是用来校验是否为正确的 IP 地址。
+
+用法像这样：
+
+```js
+expect(jsUtils.isIp("192.168.90.257")).toBeFalsy();
+expect(jsUtils.isIp("1.2.3")).toBeFalsy();
+expect(jsUtils.isIp("0.2.3.0")).toBeTruthy();
+expect(jsUtils.isIp("1111")).toBeFalsy();
+...
+```
+
+### 11. `isUserName`方法
+
+`isUserName`方法是用来校验输入为字母，数字，下划线，减号,点，输入长度为 4-16 位。
+
+用法像这样：
+
+```js
+expect(jsUtils.isUserName("spring.hehe.v5")).toBeFalsy();
+expect(jsUtils.isUserName("spring-hehe_v5")).toBeTruthy();
+expect(jsUtils.isUserName("spring-hehe@v5")).toBeFalsy();
+expect(jsUtils.isUserName("234q_sdfaw-werq")).toBeTruthy();
+...
+```
+
+### 12. `isPassword`方法
+
+`isPassword`方法是用来校验密码强度。
+
+用法像这样：
+
+```js
+expect(jsUtils.isPassword("ASD")).toBeFalsy();
+expect(jsUtils.isPassword("aA34_sdw#dd")).toBeTruthy();
+expect(jsUtils.isPassword("aA34_sdwdd")).toBeFalsy();
+...
+```
 
 ## 表单校验建议
 
