@@ -69,7 +69,6 @@ jsUtils.isEmptyOneOfTwo = (value1, value2) => {
     }
   }
 };
-
 /**
  * 如果输入内容，那么输入内容只能是汉字
  * @param {String} value
