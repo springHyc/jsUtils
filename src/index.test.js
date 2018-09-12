@@ -199,4 +199,49 @@ describe("测试jsUtils", () => {
       expect(jsUtils.isIp("1111")).toBeFalsy();
     });
   });
+
+  describe("校验有效身份证号码", () => {
+    it("18位身份证号码", () => {
+      expect(jsUtils.isIdNumber("131182199003241223")).toBeTruthy();
+      expect(jsUtils.isIdNumber("1311829003241223")).toBeTruthy();
+      expect(jsUtils.isIdNumber("131182900324122X")).toBeTruthy();
+      expect(jsUtils.isIdNumber("141182900324122X")).toBeTruthy();
+      expect(jsUtils.isIdNumber("631182209003241223")).toBeFalsy();
+      expect(jsUtils.isIdNumber("631182219003241223")).toBeFalsy();
+      expect(jsUtils.isIdNumber("631182199101321223")).toBeFalsy();
+      expect(jsUtils.isIdNumber("131182199101311221")).toBeTruthy();
+      expect(jsUtils.isIdNumber("131182199101321221")).toBeFalsy();
+      expect(jsUtils.isIdNumber("131182199102021221")).toBeFalsy(); // 校验位不对
+      expect(jsUtils.isIdNumber("131182199102021226")).toBeTruthy(); // 校验位正确
+    });
+  });
+
+  describe("校验输入为字母，数字，下划线，减号,点，输入长度为4-16位", () => {
+    it("无输入", () => {
+      expect(jsUtils.isUserName(null)).toBeFalsy();
+      expect(jsUtils.isUserName(undefined)).toBeFalsy();
+      expect(jsUtils.isUserName("")).toBeFalsy();
+    });
+    it("有输入", () => {
+      expect(jsUtils.isUserName("heh")).toBeFalsy();
+      expect(jsUtils.isUserName("hehe")).toBeTruthy();
+      expect(jsUtils.isUserName("spring.hehe.v5")).toBeFalsy();
+      expect(jsUtils.isUserName("spring-hehe_v5")).toBeTruthy();
+      expect(jsUtils.isUserName("spring-hehe@v5")).toBeFalsy();
+      expect(jsUtils.isUserName("234q_sdfaw-werq")).toBeTruthy();
+    });
+  });
+
+  describe("校验密码强度", () => {
+    it("无输入", () => {
+      expect(jsUtils.isPassword("")).toBeFalsy();
+      expect(jsUtils.isPassword(null)).toBeFalsy();
+      expect(jsUtils.isPassword(undefined)).toBeFalsy();
+    });
+    it("有输入", () => {
+      expect(jsUtils.isPassword("ASD")).toBeFalsy();
+      expect(jsUtils.isPassword("aA34_sdw#dd")).toBeTruthy();
+      expect(jsUtils.isPassword("aA34_sdwdd")).toBeFalsy();
+    });
+  });
 });
