@@ -277,29 +277,29 @@ expect(jsUtils.isPassword("aA34_sdwdd")).toBeFalsy();
 
 - 2. 尽量做好防御性编程
 
-  - 2.1 null.xxxx 报错
+  - null.xxxx 报错
     源代码是这样写的：
 
-    ```js
-    buttons: [
-      {
-        text: "关闭",
-        styleType: "ordinary",
-        onClick: () => {
-          type == 1 &&
-            (document.querySelector(".editSHA").innerHTML = "修改公钥");
-        }
-      },
-    ```
+  ```js
+  buttons: [
+    {
+      text: "关闭",
+      styleType: "ordinary",
+      onClick: () => {
+        type == 1 &&
+          (document.querySelector(".editSHA").innerHTML = "修改公钥");
+      }
+    },
+  ```
 
-    在正常情况下，是不会有任何问题，但是有时候会出现下图的情况：
+  在正常情况下，是不会有任何问题，但是有时候会出现下图的情况：
 
-    ![image.png](https://upload-images.jianshu.io/upload_images/2041009-40f84a16c12f5eed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  ![image.png](https://upload-images.jianshu.io/upload_images/2041009-40f84a16c12f5eed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-    这时候就需要我们做好防御性编程。可以简单的这样写：
+  这时候就需要我们做好防御性编程。可以简单的这样写：
 
-    ```js
-    if (type == 1 && document.querySelector(".editSHA")) {
-      document.querySelector(".editSHA").innerHTML = "修改公钥";
-    }
-    ```
+  ```js
+  if (type == 1 && document.querySelector(".editSHA")) {
+    document.querySelector(".editSHA").innerHTML = "修改公钥";
+  }
+  ```
