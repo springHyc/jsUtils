@@ -57,7 +57,7 @@ describe("测试jsUtils", () => {
     expect(jsUtils.isInteger("11d23")).toBeFalsy();
     expect(jsUtils.isInteger("11dd45")).toBeFalsy();
     expect(jsUtils.isDigit("")).toBeFalsy();
-    expect(jsUtils.isDigit(null)).toBeFalsy();
+    expect(jsUtils.isDigit(null)).toBeTruthy();
     expect(jsUtils.isDigit(undefined)).toBeFalsy();
   });
 
