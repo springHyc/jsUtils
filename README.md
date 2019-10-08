@@ -19,10 +19,10 @@
 >
 > 简单说下单元测试的好处：
 >
-> - 单元测试不但会使你的工作完成得更轻松。而且会令你的设计会变得更好，甚至大大减少你花在调试上面的时间
-> - 提高代码质量
-> - 减少 bug，快速定位 bug
-> - 放心地修改、重构
+> -   单元测试不但会使你的工作完成得更轻松。而且会令你的设计会变得更好，甚至大大减少你花在调试上面的时间
+> -   提高代码质量
+> -   减少 bug，快速定位 bug
+> -   放心地修改、重构
 >
 > 单元测试提倡的是<u>测试驱动开发-测试先行</u>。</br>
 >
@@ -40,11 +40,11 @@
 
 ## ✨ 特性
 
-- 开箱即用的高质量的组件。
-- `lodash`自身原本方法都可使用。
-- 扩展`lodash`方法，增加更加适合业务的方法。
-- 增加常用的表单校验方法。
-- 支持扩展丰富。
+-   开箱即用的高质量的组件。
+-   `lodash`自身原本方法都可使用。
+-   扩展`lodash`方法，增加更加适合业务的方法。
+-   增加常用的表单校验方法。
+-   支持扩展丰富。
 
 ## 📦 安装
 
@@ -55,25 +55,25 @@ npm install jsutils-100 --save
 ## 🔨 示例
 
 ```jsx
-import jsUtils from "jsutils-100";
-jsUtils.isEmpty(""); // true
+import jsUtils from 'jsutils-100';
+jsUtils.isEmpty(''); // true
 ```
 
 ## 详细介绍
 
 在`jsutils-100`项目中，重写了`isEmpty`方法，添加了一些常见的表单校验中会用到的方法，目前增加了以下方法：
 
-- `isHundred`
-- `isDigit`
-- `isInteger`
-- `isEmptyOneOfTwo`
-- `isChinese`
-- `isEmail`
-- `isPhoneNumber`
-- `isIdNumber`
-- `isIp`
-- `isUserName`
-- `isPassword`
+-   `isHundred`
+-   `isDigit`
+-   `isInteger`
+-   `isEmptyOneOfTwo`
+-   `isChinese`
+-   `isEmail`
+-   `isPhoneNumber`
+-   `isIdNumber`
+-   `isIp`
+-   `isUserName`
+-   `isPassword`
 
 同时也希望大家可以将这个项目补充起来，将自己在工作中常用到的校验方法添加到这个项目中来，共同来维护这个库，这样在不久的将来，我们再开发业务时，就不会为校验而担忧。
 
@@ -91,13 +91,13 @@ jsUtils.isEmpty(""); // true
 像这样：
 
 ```js
-it("isEmpty", () => {
-  expect(jsUtils.isEmpty(0)).toBeFalsy();
-  expect(jsUtils.isEmpty("")).toBeTruthy();
-  expect(jsUtils.isEmpty("0")).toBeFalsy();
-  expect(jsUtils.isEmpty(undefined)).toBeTruthy();
-  expect(jsUtils.isEmpty(null)).toBeTruthy();
-  expect(jsUtils.isEmpty("ss")).not.toBeTruthy();
+it('isEmpty', () => {
+    expect(jsUtils.isEmpty(0)).toBeFalsy();
+    expect(jsUtils.isEmpty('')).toBeTruthy();
+    expect(jsUtils.isEmpty('0')).toBeFalsy();
+    expect(jsUtils.isEmpty(undefined)).toBeTruthy();
+    expect(jsUtils.isEmpty(null)).toBeTruthy();
+    expect(jsUtils.isEmpty('ss')).not.toBeTruthy();
 });
 ```
 
@@ -327,7 +327,7 @@ buttons: [
 这时候就需要我们做好防御性编程。可以简单的这样写：
 
 ```js
-if (type == 1 && document.querySelector(".editSHA")) {
-  document.querySelector(".editSHA").innerHTML = "修改公钥";
+if (type == 1 && document.querySelector('.editSHA')) {
+    document.querySelector('.editSHA').innerHTML = '修改按钮;
 }
 ```
