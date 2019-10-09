@@ -75,6 +75,7 @@ jsUtils.isEmpty(''); // true
 -   `isDigit`
 -   `isInteger`
 -   `isEmptyOneOfTwo`
+-   `isEmptyOfMany`
 -   `isChinese`
 -   `isEmail`
 -   `isPhoneNumber`
@@ -169,6 +170,10 @@ expect(
 ).toBeFalsy();
 ...
 ```
+
+### 5. `isEmptyOfMany` 方法
+
+`isEmptyOneOfTwo`方法是用来验证 value1 和 value2 ...valueN 有一个不为空即可返回 true。
 
 ### 6. `isChinese`方法
 
