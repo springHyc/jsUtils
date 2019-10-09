@@ -1,6 +1,14 @@
 # jsUtils
 
-## test4
+## 版本变更记录
+
+### webpack-build（分支）
+
+-   添加 webpack 进行发布,可被其他项目引入使用
+
+```js
+$ webpack && npm publish
+```
 
 ## 背景
 
