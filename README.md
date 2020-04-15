@@ -2,15 +2,18 @@
 
 ## 版本变更记录
 
-### webpack-build（分支）
+### webpack-build | 100credit（分支）
 
--   添加 webpack 进行发布,可被其他项目引入使用
+- 添加 webpack 进行发布,可被其他项目引入使用
 
 ```js
-$ webpack && npm publish
+$ webpack && npm publish - npm 仓库
+$ webpack && cnpm login --registry=http://registry.shuqudata.com/ && cnpm publish - cnpm仓库
 ```
 
 ## 背景
+
+主要用于 gbs。
 
 在做表单的时候，会遇到很多的表单项的验证工作，几乎很多验证都是重复的，有一个比较好的[lodash](https://github.com/lodash/lodash)库来做了这些工作，但是里面有些方法和实际的业务工作有些不符。比如，`lodash.isEmpty(2) // true`是会认为是空的。这显然与实际的业务是不符的。另外还有一些数字校验、文字校验等一些常用的校验方法，想结合[lodash](https://github.com/lodash/lodash)做一个自己的 jsUtils 库，里面封装一些业务上常用的校验方式，这样比较有利于业务的开发。
 
@@ -27,10 +30,10 @@ $ webpack && npm publish
 >
 > 简单说下单元测试的好处：
 >
-> -   单元测试不但会使你的工作完成得更轻松。而且会令你的设计会变得更好，甚至大大减少你花在调试上面的时间
-> -   提高代码质量
-> -   减少 bug，快速定位 bug
-> -   放心地修改、重构
+> - 单元测试不但会使你的工作完成得更轻松。而且会令你的设计会变得更好，甚至大大减少你花在调试上面的时间
+> - 提高代码质量
+> - 减少 bug，快速定位 bug
+> - 放心地修改、重构
 >
 > 单元测试提倡的是<u>测试驱动开发-测试先行</u>。</br>
 >
@@ -48,41 +51,42 @@ $ webpack && npm publish
 
 ## ✨ 特性
 
--   开箱即用的高质量的组件。
--   `lodash`自身原本方法都可使用。
--   扩展`lodash`方法，增加更加适合业务的方法。
--   增加常用的表单校验方法。
--   支持扩展丰富。
+- 开箱即用的高质量的组件。
+- `lodash`自身原本方法都可使用。
+- 扩展`lodash`方法，增加更加适合业务的方法。
+- 增加常用的表单校验方法。
+- 支持扩展丰富。
 
 ## 📦 安装
 
 ```bash
-npm install jsutils-100 --save
+npm install jsutils-100 --save （npm仓库）
+cnpm i @bairong/jsutils-100(cnpm仓库)
 ```
 
 ## 🔨 示例
 
 ```jsx
-import jsUtils from 'jsutils-100';
-jsUtils.isEmpty(''); // true
+import jsUtils from "jsutils-100";
+jsUtils.isEmpty(""); // true
 ```
 
 ## 详细介绍
 
 在`jsutils-100`项目中，重写了`isEmpty`方法，添加了一些常见的表单校验中会用到的方法，目前增加了以下方法：
 
--   `isHundred`
--   `isDigit`
--   `isInteger`
--   `isEmptyOneOfTwo`
--   `isEmptyOfMany`
--   `isChinese`
--   `isEmail`
--   `isPhoneNumber`
--   `isIdNumber`
--   `isIp`
--   `isUserName`
--   `isPassword`
+- `isHundred`
+- `isDigit`
+- `isInteger`
+- `isEmptyOneOfTwo`
+- `isEmptyOfMany`
+- `isChinese`
+- `isEmail`
+- `isPhoneNumber`
+- `isIdNumber`
+- `isIp`
+- `isUserName`
+- `isPassword`
 
 同时也希望大家可以将这个项目补充起来，将自己在工作中常用到的校验方法添加到这个项目中来，共同来维护这个库，这样在不久的将来，我们再开发业务时，就不会为校验而担忧。
 
@@ -100,13 +104,13 @@ jsUtils.isEmpty(''); // true
 像这样：
 
 ```js
-it('isEmpty', () => {
-    expect(jsUtils.isEmpty(0)).toBeFalsy();
-    expect(jsUtils.isEmpty('')).toBeTruthy();
-    expect(jsUtils.isEmpty('0')).toBeFalsy();
-    expect(jsUtils.isEmpty(undefined)).toBeTruthy();
-    expect(jsUtils.isEmpty(null)).toBeTruthy();
-    expect(jsUtils.isEmpty('ss')).not.toBeTruthy();
+it("isEmpty", () => {
+  expect(jsUtils.isEmpty(0)).toBeFalsy();
+  expect(jsUtils.isEmpty("")).toBeTruthy();
+  expect(jsUtils.isEmpty("0")).toBeFalsy();
+  expect(jsUtils.isEmpty(undefined)).toBeTruthy();
+  expect(jsUtils.isEmpty(null)).toBeTruthy();
+  expect(jsUtils.isEmpty("ss")).not.toBeTruthy();
 });
 ```
 
